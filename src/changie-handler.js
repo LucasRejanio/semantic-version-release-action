@@ -54,10 +54,16 @@ function generateChangelogForNewReleaseVersion(newReleaseVersion, commitsMessage
     for (const line of lines) {
         if (line.startsWith('feat:')) {
             addedSection += `\n*${line.substring(5)}`
+        } else if (line.startsWith('feat(')) {
+            addedSection += `\n* ${line.substring(4)}`
         } else if (line.startsWith('refactor:')) {
             changedSection += `\n*${line.substring(9)}`
+        } else if (line.startsWith('refactor(')) {
+            changedSection += `\n* ${line.substring(8)}`
         } else if (line.startsWith('fix:')) {
             fixedSection += `\n*${line.substring(4)}`
+        } else if (line.startsWith('fix(')) {
+            fixedSection += `\n* ${line.substring(3)}`
         }
     }
 
