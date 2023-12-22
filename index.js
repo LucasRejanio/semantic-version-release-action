@@ -8,10 +8,10 @@ async function main() {
     try {
         const githubUserName = core.getInput('github-user-name').toString()
         const githubUserEmail = core.getInput('github-user-email').toString()
-        const githubToken = core.getInput('github-token').toString()
+        const githubUserToken = core.getInput('github-user-token').toString()
         const semanticType = core.getInput('semantic-type').toString()
 
-        await consfigurator.checkActionInputs(githubUserName, githubUserEmail, githubToken, semanticType)
+        await consfigurator.checkActionInputs(githubUserName, githubUserEmail, githubUserToken, semanticType)
         await changieHandler.verifyIfChangieIsInitialized()
         await githubHandler.configureGitUser(githubUserName, githubUserEmail)
 
@@ -24,7 +24,7 @@ async function main() {
         await githubHandler.commit('.changes/ .changie.yaml CHANGELOG.md', `release: create changelog to version ${newReleaseVersion}`)
         await githubHandler.push()
 
-        await githubHandler.publishRelease(githubToken, newReleaseVersion, changelogContent)
+        await githubHandler.publishRelease(githubUserToken, newReleaseVersion, changelogContent)
     } catch (error) {
         throw Error(error)
     }

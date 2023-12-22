@@ -1,7 +1,7 @@
 const githubHandler = require("./src/github-handler")
 const changieHandler = require("./src/changie-handler")
 
-var githubToken = process.env.GITHUB_TOKEN;
+var githubUserToken = process.env.GITHUB_TOKEN;
 
 async function main() {
     try {
@@ -16,7 +16,7 @@ async function main() {
         githubHandler.commit(".changes/ .changie.yaml CHANGELOG.md", `release: create changelog to version ${newReleaseVersion}`)
         githubHandler.push()
 
-        githubHandler.publishRelease(githubToken, newReleaseVersion, changelogContent)
+        githubHandler.publishRelease(githubUserToken, newReleaseVersion, changelogContent)
     } catch (error) {
         throw Error(error)
     }

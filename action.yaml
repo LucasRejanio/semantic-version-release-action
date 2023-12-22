@@ -7,7 +7,7 @@ inputs:
   github-user-email:
     description: "A user name for git operations in the release repository"
     required: true
-  github-token:
+  github-user-token:
     description: "A user token for git operations in the release repository"
     required: true
   semantic-type:

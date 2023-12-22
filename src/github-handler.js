@@ -61,9 +61,9 @@ function getCommitsBetweenLastRelease(latestReleaseVersion) {
     return commitMessages
 }
 
-async function publishRelease(githubToken, newReleaseVersion, description) {
+async function publishRelease(githubUserToken, newReleaseVersion, description) {
     const octokit = new Octokit({
-        auth: githubToken
+        auth: githubUserToken
     })
       
     const response = await octokit.request(`POST /repos/${owner}/${repository}/releases`, {
