@@ -10,6 +10,7 @@ A simple action that generate semantic versions release using the changie.dev.
 | Name | Description | Default | Required |
 |--- |--- |--- |--- |
 | github-user-name | A user name for git operations in the release repository | Null | Yes |
+| github-user-email | A user email for git operations in the release repository | Null | Yes |
 | github-token | A user token for git operations in the release repository | Null | Yes |
 | semantic-type | Semantic type (major.minor.patch) | Null | Yes |
 
@@ -19,7 +20,8 @@ A simple action that generate semantic versions release using the changie.dev.
 - name: Publish New Semantic Version Release
   uses: ${ORGANIZATION}/semantic-version-release-action@main
   with:
-    github-user-name: ${YOUR_USER_NAME}
-    github-token: ${YOUR_GITHUB_TOKEN}
+    github-user-name: ${{ env.YOUR_USER_NAME }}
+    github-user-email: ${{ env.YOUR_USER_EMAIL }}
+    github-token: ${{ env.YOUR_GITHUB_TOKEN }}
     semantic-type: ${{ env.SEMANTIC_TYPE }}
 ```
