@@ -18,7 +18,7 @@ A simple action that generate semantic versions release using the changie.dev.
 
 ```yaml
 - name: Publish New Semantic Version Release
-  uses: ${ORGANIZATION}/semantic-version-release-action@main
+  uses: ${{ env.ORGANIZATION_OR_USER }}/semantic-version-release-action@main
   with:
     github-user-name: ${{ env.YOUR_USER_NAME }}
     github-user-email: ${{ env.YOUR_USER_EMAIL }}
