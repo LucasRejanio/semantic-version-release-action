@@ -7,12 +7,13 @@ const changieHandler = require('./src/changie-handler')
 async function main() {
     try {
         const githubUserName = core.getInput('github-user-name').toString()
+        const githubUserEmail = core.getInput('github-user-email').toString()
         const githubToken = core.getInput('github-token').toString()
         const semanticType = core.getInput('semantic-type').toString()
 
-        await consfigurator.checkActionInputs(githubUserName, githubToken, semanticType)
+        await consfigurator.checkActionInputs(githubUserName, githubUserEmail, githubToken, semanticType)
         await changieHandler.verifyIfChangieIsInitialized()
-        await githubHandler.configureGitUser(githubUserName)
+        await githubHandler.configureGitUser(githubUserName, githubUserEmail)
 
         const latestReleaseVersion = githubHandler.getLatestReleaseVersion()
         const newReleaseVersion = changieHandler.formatNewReleaseVersion(semanticType, latestReleaseVersion)

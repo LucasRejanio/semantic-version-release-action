@@ -5,8 +5,9 @@ var githubRepository = process.env.GITHUB_REPOSITORY; // Repository name (<OWNER
 
 const [owner, repository] = githubRepository.split('/')
 
-async function configureGitUser(gitUserName) {
+async function configureGitUser(gitUserName, githubUserEmail) {
     execSync(`git config --global user.name "${gitUserName}"`)
+    execSync(`git config --global user.email "${githubUserEmail}"`)
 }
 
 async function commit(fileToAdd, commitMessage) {

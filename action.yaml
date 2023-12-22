@@ -4,6 +4,9 @@ inputs:
   github-user-name:
     description: "A user name for git operations in the release repository"
     required: true
+  github-user-email:
+    description: "A user name for git operations in the release repository"
+    required: true
   github-token:
     description: "A user token for git operations in the release repository"
     required: true
