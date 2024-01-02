@@ -66,6 +66,7 @@ jobs:
         uses: LucasRejanio/semantic-version-release-action@main
         with:
           github-user-name: "LucasRejanio-deploy"
+          github-user-email: "LucasRejanioDeploy@example.com"
           github-user-token: ${{ secrets.SEMANTIC_VERSION_RELEASE_ACTION }}
           semantic-type: ${{ inputs.SEMANTIC_TYPE }}
 
@@ -117,5 +118,6 @@ jobs:
         uses: LucasRejanio/semantic-version-release-action@main
         with:
           github-user-name: "LucasRejanio-deploy"
+          github-user-email: "LucasRejanioDeploy@example.com"
           github-user-token: ${{ secrets.SEMANTIC_VERSION_RELEASE_ACTION }}
-          semantic-type: ${{ inputs.SEMANTIC_TYPE }}
+          semantic-type: ${{ vars.SEMANTIC_TYPE }}
