@@ -9,9 +9,9 @@ A simple action that generate semantic versions release using the changie.dev.
 
 | Name | Description | Default | Required |
 |--- |--- |--- |--- |
-| github-user-name | A user name for git operations in the release repository | Null | Yes |
-| github-user-email | A user email for git operations in the release repository | Null | Yes |
-| github-user-token | A user token for git operations in the release repository | Null | Yes |
+| github-user-name | A user name for git operations in the release repository. | Null | Yes |
+| github-user-email | A user email for git operations in the release repository. | Null | Yes |
+| github-user-token | A user token for git operations in the release repository. | Null | Yes |
 | semantic-type | Semantic type (major.minor.patch) | Null | Yes |
 
 ## Example usage
