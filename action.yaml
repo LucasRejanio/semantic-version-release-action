@@ -1,5 +1,5 @@
 name: "Semantic Version Release"
-description: "This action is used to update the image tag"
+description: "This action is used to update the image tag."
 inputs:
   github-user-name:
     description: "A user name for git operations in the release repository."
@@ -11,7 +11,7 @@ inputs:
     description: "A user token for git operations in the release repository."
     required: true
   semantic-type:
-    description: "Semantic type (major.minor.patch)"
+    description: "Semantic type (major.minor.patch)."
 runs:
-  using: "node16"
+  using: "node20"
   main: "index.js"
