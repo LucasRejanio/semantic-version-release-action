@@ -22,6 +22,6 @@ A simple action that generate semantic versions release using the changie.dev.
   with:
     github-user-name: ${{ env.YOUR_USER_NAME }}
     github-user-email: ${{ env.YOUR_USER_EMAIL }}
-    github-user-token: ${{ env.YOUR_GITHUB_TOKEN }}
+    github-user-token: ${{ secret.YOUR_GITHUB_TOKEN }}
     semantic-type: ${{ env.SEMANTIC_TYPE }}
 ```
