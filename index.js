@@ -5,29 +5,29 @@ const githubHandler = require('./src/github-handler')
 const changieHandler = require('./src/changie-handler')
 
 async function main() {
-    try {
-        const githubUserName = core.getInput('github-user-name').toString()
-        const githubUserEmail = core.getInput('github-user-email').toString()
-        const githubUserToken = core.getInput('github-user-token').toString()
-        const semanticType = core.getInput('semantic-type').toString()
+  try {
+    const githubUserName = core.getInput('github-user-name').toString()
+    const githubUserEmail = core.getInput('github-user-email').toString()
+    const githubUserToken = core.getInput('github-user-token').toString()
+    const semanticType = core.getInput('semantic-type').toString()
 
-        await consfigurator.checkActionInputs(githubUserName, githubUserEmail, githubUserToken, semanticType)
-        await changieHandler.verifyIfChangieIsInitialized()
-        await githubHandler.configureGitUser(githubUserName, githubUserEmail)
+    await consfigurator.checkActionInputs(githubUserName, githubUserEmail, githubUserToken, semanticType)
+    await changieHandler.verifyIfChangieIsInitialized()
+    await githubHandler.configureGitUser(githubUserName, githubUserEmail)
 
-        const latestReleaseVersion = githubHandler.getLatestReleaseVersion()
-        const newReleaseVersion = changieHandler.formatNewReleaseVersion(semanticType, latestReleaseVersion)
-        
-        const commitMessages = githubHandler.getCommitsBetweenLastRelease(latestReleaseVersion)
-        const changelogContent = changieHandler.generateChangelogForNewReleaseVersion(newReleaseVersion, commitMessages)
-        
-        await githubHandler.commit('.changes/ .changie.yaml CHANGELOG.md', `release: create changelog to version ${newReleaseVersion}`)
-        await githubHandler.push()
+    const latestReleaseVersion = githubHandler.getLatestReleaseVersion()
+    const newReleaseVersion = changieHandler.formatNewReleaseVersion(semanticType, latestReleaseVersion)
+    
+    const commitMessages = githubHandler.getCommitsBetweenLastRelease(latestReleaseVersion)
+    const changelogContent = changieHandler.generateChangelogForNewReleaseVersion(newReleaseVersion, commitMessages)
+    
+    await githubHandler.commit('.changes/ .changie.yaml CHANGELOG.md', `release: create changelog to version ${newReleaseVersion}`)
+    await githubHandler.push()
 
-        await githubHandler.publishRelease(githubUserToken, newReleaseVersion, changelogContent)
-    } catch (error) {
-        throw Error(error)
-    }
+    await githubHandler.publishRelease(githubUserToken, newReleaseVersion, changelogContent)
+  } catch (error) {
+    throw Error(error)
+  }
 }
 
 main()
